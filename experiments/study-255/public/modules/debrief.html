@@ -1,0 +1,97 @@
+<div id="debrief">
+
+<h1> Findings </h1>
+
+<p>
+Tell us about 3-5 findings you discovered in the data.
+Use the text boxes below to separate your results.
+</p>
+
+<div class="response">
+<textarea name="textarea" rows="4" cols="80">Finding 1</textarea>
+</div>
+
+<div class="response">
+<textarea name="textarea" rows="4" cols="80">Finding 2</textarea>
+</div>
+
+<div class="response">
+<textarea name="textarea" rows="4" cols="80">Finding 3</textarea>
+</div>
+
+<div class="response">
+<textarea name="textarea" rows="4" cols="80">Finding 4</textarea>
+</div>
+
+<div class="response">
+<textarea name="textarea" rows="4" cols="80">Finding 5</textarea>
+</div>
+
+<h1> Comments </h1>
+
+<div class="response">
+<p>Please describe your general analysis strategy when interacting with the charts</p>
+<textarea name="textarea" rows="4" cols="80"></textarea>
+</div>
+
+<div class="response">
+<p>Did you revisit any charts during your analysis? If so, how difficult was it to find the one you visited before?</p>
+<textarea name="textarea" rows="4" cols="80"></textarea>
+</div>
+
+
+
+<div id="codebox" style="display: none">
+<p>
+<strong>Please copy and paste the following code back on Mechanical Turk before closing this window:</strong>
+</p>
+<h2 id="postId"></h2>
+</div>
+
+<div id="submitFeedback"></div>
+
+<button id="submitComments" disabled="true" type="button">Submit</button>
+
+</div>
+
+<style>
+  .response {
+    margin-top: 16px;
+  }
+
+  #submitComments, #codebox {
+    margin-top: 16px;
+  }
+</style>
+
+<script>
+(function() {
+  var postId  = experimentr.postId
+    , data    = {};
+
+  d3.select("#postId").text(postId);
+
+  var comments = d3.select('#debrief').selectAll('textarea')
+    .on('keypress', function() { d3.select('#submitComments').attr('disabled', null); })
+    .on('blur', function() { d3.select('#submitComments').attr('disabled', null); });
+
+  d3.select('#submitComments')
+    .on('click', function () { 
+      comments[0].map(function(o, i) {
+        var comments = d3.select(o).property('value'); 
+        data["comments_"+(i+1)] = comments;
+      });
+      validate(); 
+    });
+
+  function validate() {
+    if( data.comments_5 ) {
+      experimentr.addData(data);
+      d3.select('#submitComments').attr('disabled', 'true');
+      d3.select('#submitFeedback').text('Submit Successful');
+      d3.select("#codebox")
+        .style("display", "inline");
+    }
+  }
+}());
+</script>

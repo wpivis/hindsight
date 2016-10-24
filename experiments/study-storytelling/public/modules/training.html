@@ -1,0 +1,55 @@
+<div id="training">
+
+<h2>Instructions</h2>
+
+<p> In the next page, you will explore a visualization about environment. Your task is to analyze how the content on this site has evolved over time. The image below shows how you can interact with the visualization. In this visualization, you can</p>
+<p><strong>>> Mouseover the map, the sidebar, or the lines to view details.</strong></p>
+<p><strong>>> Try clicking on the map, the sidebar, or the lines to change the display.</strong></p>
+<p><strong>>> Select years at the top to view time-based information.</strong></p>
+<div id="fd"><p><strong>>> To help you navigate the data, items that you have already visited will change to be distinct. </strong></p></div>
+<img src="" style="width:600px">
+
+<p>
+<button id="start" type="button">Start Exploring >></button>
+</p>
+
+
+</div>
+
+<style>
+  #fadeInstruction {
+    display: none;
+  }
+  #consentForm {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    height: 200px;
+    overflow-y: scroll;
+    padding: 15px;
+  }
+</style>
+
+<script>
+(function() {
+
+  experimentr.hideNext();
+  experimentr.startTimer('training');
+
+  d3.select('#start').on('click', function() {
+    experimentr.endTimer('training');
+    experimentr.next();
+  });
+
+  //instructions
+  if(smData.condition == "nofade")
+  {
+	   d3.select('#training').select('#fd').style('display','none');
+  }
+
+  //training image
+  var imgsrc = "img/"+ smData.condition + ".gif";
+  d3.select('#training').select('img').attr('src',imgsrc);
+  
+
+}());
+</script>

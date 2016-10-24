@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+
+<meta charset="utf-8">
+<title>MetaFilter -- HindSight</title>
+
+<script src="components/d3js/d3.v3.min.js"></script>
+<script src="experimentr.js"></script>
+
+<script>window.jQuery || document.write('<script src="js/libs/jquery-1.7.2.min.js"><\/script>')</script>
+<script src="js/libs/modernizr-2.0.6.min.js"></script>
+
+<script src="js/libs/coffee-script.js"></script>
+<script src="js/libs/isotope.pkgd.min.js"></script>
+<script src="js/libs/queue.min.js"></script>
+<script src="js/libs/d3.js"></script>
+<script type="text/coffeescript" src="coffee/small_multiples.coffee"></script>
+
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/style.css">
+
+<style>
+* {
+    color: #333;
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  }
+
+  body {
+    margin: 1em auto 4em auto;
+    width: 960px;
+  }
+  #experimentr {
+    margin: 4em auto 1em auto;
+    width: 720px;
+  }
+  #control {
+    margin-top: 1em;
+  }
+  #next-button {
+    float: right;
+  }
+
+  .placeholder {
+    color: #7A378B;
+    font-weight: bold;
+    text-decoration: underline;
+  }
+
+  #hit {
+    display: none;
+  }
+
+</style>
+
+<body>
+
+  <div id="hit" class="container">
+    <h1>Analyzing data trends from a popular social media site</h1>
+
+    <div id="lead">
+      <p>The data below represents posts from a popular social media site.
+      Each plot displays how the number of posts in a category have changed over time.
+      Post counts are aggregated by year.</p>
+    </div>
+
+    <div id="main">
+      <div id="button-wrap">
+        <div id="count" class="button active">COUNT</div>
+        <div id="name" class="button">NAME</div>
+      </div>
+
+      <div id="vis"></div>
+
+    </div>
+
+    <div>
+      <!-- <button id="finished">Click here when finished (you cannot return to this page).</button> -->
+    </div>
+  </div> <!--! end of #container -->
+
+</body>
+
+<script>
+setTimeout(function() { 
+  experimentr.sequence([
+    'hit.html'
+  ]).start();
+}, 1000);
+</script>

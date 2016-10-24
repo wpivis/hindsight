@@ -1,0 +1,27 @@
+---
+title: "255 - inter-coder agreement"
+output:
+  html_document:
+    highlight: default
+    theme: cerulean
+    toc: yes
+  pdf_document:
+    toc: yes
+---
+
+## Loading and Setup
+```{r, echo=FALSE}
+library(ggplot2)
+library(dplyr)
+library(tidyr)
+library(boot)
+library(irr)
+data <- read.csv("../data/255 - inter-coder agreement.csv")
+source("hindsight.R")
+```
+## Inter-coder Test
+```{r}
+coderCol = c(3:5)
+
+agreementRate("industry")
+```

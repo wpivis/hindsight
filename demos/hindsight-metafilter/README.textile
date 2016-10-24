@@ -1,0 +1,22 @@
+h1. Linked Small Multiples
+
+FlowingData interactive linked small multiples.
+
+h2. Usage
+
+You can start up a local webserver by using python's simple server:
+
+<pre>
+python -m SimpleHTTPServer 3000
+</pre>
+
+
+or @thin@ in ruby
+
+<pre>
+thin start
+# might have to run 'bundle install' first
+</pre>
+
+Now go to "http://0.0.0.0:3000":http://0.0.0.0:3000/
+

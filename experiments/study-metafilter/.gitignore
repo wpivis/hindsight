@@ -1,0 +1,17 @@
+appendonly.aof
+analysis/results/.Rhistory
+analysis/results/data.csv
+analysis/results/img/
+analysis/results/data.json
+analysis/visualization/data/
+node_modules/
+*.bat
+*.swp
+.Rproj.user
+
+#################
+## NetBeans
+#################
+
+*.iml
+/nbproject

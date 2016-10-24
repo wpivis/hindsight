@@ -1,0 +1,49 @@
+---
+title: "metafilter - analysis"
+output:
+  html_document:
+    highlight: default
+    theme: cerulean
+    toc: yes
+  pdf_document:
+    fig_height: 3
+    fig_width: 6
+    toc: yes
+---
+## Loading and Setup
+```{r, echo=FALSE}
+data <- read.csv("../data/metafilter - analysis.csv")
+source("hindsight.R")
+```
+## Conversions and Filtering
+```{r}
+# Convert Time to something more readable
+data$time_for_charts <- data$time_for_charts/1000 
+
+fade <- subset(data, condition=="fade")
+nofade <- subset(data, condition=="nofade")
+
+length( data[,1] )
+length(fade[,1])
+length(nofade[,1])
+```
+
+### Wilcox-Test
+```{r}
+wilcox.test(data$visited ~ data$condition)
+wilcox.test(data$revisit ~ data$condition)
+wilcox.test(data$time_for_charts ~ data$condition)
+```
+
+### Confidence Intervals
+```{r}
+ciplot("visited")
+ciplot("revisit")
+ciplot("time_for_charts")
+```
+
+## Effect Sizes
+```{r}
+reportES(data, "visited")  
+reportES(data, "time_for_charts")  
+```

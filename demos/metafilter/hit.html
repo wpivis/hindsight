@@ -1,0 +1,53 @@
+
+  <div>
+  </div>
+
+  <script>
+  (function() {
+    var data  = {};
+
+    init();
+
+
+    function init() {
+
+      experimentr.hideNext();
+
+      makeSmallMultiples();
+      d3.select('#hit').style('display', 'inline');
+
+      experimentr.startTimer('exploration');
+
+      // "click here when you're finished" on bottom ends it
+      d3.select('#finished')
+      .on('click', function() { validate(); });
+    }
+
+    function validate() {
+      // Gather our data
+      var visited = d3.selectAll('.expVisited');
+      console.log('Number visited: ', visited[0].length);
+      //visitedData
+      smData.visitedArray = JSON.stringify(smData.visitedArray);
+      console.log('Detailed Data: ', smData);
+
+      data.mouseOver = smData.mouseOver;
+      data.mouseMove = smData.mouseMove;
+      data.sortEvent = smData.sortEvent;
+      data.fadeDelay = smData.fadeDelay;
+      data.condition = smData.condition;
+      data.visited = visited[0].length;
+      //data.visited_sequence = smData.visited_sequence;
+      data.visited_sequence_arr = smData.visited_sequence;
+      data.visitedArray = smData.visitedArray;
+
+      // Wrap up
+      experimentr.addData(data);
+      experimentr.endTimer('exploration');
+      d3.select('#hit').style('display', 'none');
+      experimentr.next();
+    }
+
+  }());
+  </script>
+

@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style type="text/css">
+body {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+h1 {
+    text-align: center;
+}
+
+#imgDiv {
+    text-align: center;
+    float: left;
+}
+
+#nav {
+  margin-top: 16px;
+  margin-bottom: 32px;
+}
+
+.hsexample {
+  margin-left: 32px;
+  margin-top: 0px;
+  clear: both;
+  height: 250px;
+}
+
+.hsexample h4 {
+  margin-top: 0px;
+  padding-top: 0px;
+}
+
+.hstext {
+  display: inline-block;
+  float: left;
+  width: 600px;
+  text-align: left;
+  margin-left: 16px;
+}
+
+.hsimg {
+  display: inline-block;
+  float:left;
+}
+
+</style>
+<head> 
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-switch/3.3.2/js/bootstrap-switch.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-switch/3.3.2/css/bootstrap2/bootstrap-switch.css">
+
+</head>
+<body>
+  <div class="col-md-12">
+
+    <h1>HindSight</h1>
+    <h4 style="text-align:center"><a href="http://www.mifeng.name/">Mi Feng</a>, Cheng Deng, <a href="https://www.eg.bucknell.edu/~emp017/">Evan M. Peck</a>, <a href="http://web.cs.wpi.edu/~ltharrison/">Lane Harrison</a></h4>
+
+    <div style="width: 100%; text-align: center;" id="nav">
+      <!-- <a href="http://web.cs.wpi.edu/~ltharrison/files/feng2016hindsight.pdf" target="_blank"><label>Try <br></label></a> -->
+      <a href="http://web.cs.wpi.edu/~ltharrison/files/feng2016hindsight.pdf" target="_blank"><label><span class="glyphicon glyphicon-file
+      "></span>PDF <br></label></a>
+      <a data-toggle="modal" data-target="#myModal"><label><span class="glyphicon glyphicon-pencil"></span>Cite <br></label></a>
+      <a href="https://github.com/wpivis/hindsight" target="_blank"><label><span class="glyphicon glyphicon-console"></span>GitHub</label></a>
+    </div>
+
+  </div>
+     
+  <div class="col-md-12">
+
+    <div class="col-md-6 text-center">
+      <video width="100%" autoplay=true autostart=true controls>
+        <source src="docs/InfoVis-127.mp4" type="video/mp4">
+        Your browser does not support HTML5 video.
+      </video>
+    </div>
+
+    <div class="col-md-6" style="max-width: 550px"> 
+      <p>
+      Physical and digital objects often leave markers of our use. Website links turn purple after we visit them, for example, showing us information we have yet to explore. These "footprints" of interaction help us navigate information saturated environments – they enable us to easily revisit old information, systematically explore new information, and quickly resume tasks after interruption. The design principles are simple, but have clear benefits. Could they also apply to data visualization? 
+      </p>
+      <p>
+      We propose HindSight – an umbrella term for the design space of representing interaction history directly in existing data visualizations. In this work, we examine the value of HindSight principles by augmenting existing visualizations with visual indicators of user interaction history (e.g. How the Recession Shaped the Economy in 255 Charts, NYTimes). Try some examples yourself in the links above! 
+      </p>
+      <p>
+      In controlled experiments of over 400 participants, we found that HindSight designs generally encouraged people to visit more data and recall different insights after interaction. The addition of HindSight requires little-to-no technical overhead (often just a couple of lines of code), and is based on interactions that are familiar to a diverse set of users. Simple additions to visualizations can significantly impact users' exploration and insights.
+      </p>
+    </div>
+
+    </div>
+
+<div class="modal fade" id="myModal" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Citation</h4>
+      </div>
+      <div class="modal-body">
+<!-- pre takes spaces literally, so no indentation here -->
+<pre>
+@article{feng2016hindsight,
+  title={HindSight: Encouraging Exploration through Direct Encoding of Personal Interaction History},
+  author={Feng, Mi and Deng, Cheng and Peck, Evan and Harrison, Lane},
+  journal={IEEE Transactions on Visualization and Computer Graphics},
+  year={2016}
+}
+</pre>
+<p>Feng, M., Deng, C., Peck, E., and Harrison, L. HindSight: Encouraging Exploration through Direct Encoding of Personal Interaction History. IEEE Transactions on Visualization and Computer Graphics, 2016.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--
+<div class="hidden-xs hidden-sm">
+<div style="margin:20px; width: 100%; Height: 40px;  float: left" > <input type="checkbox" width="200px" name="my-checkbox" checked> </div>
+-->
+<div class="col-md-12">
+<h2 style="margin-bottom:32px">HindSight Examples</h2>
+
+<div class="hsexample">
+  <div class="hsimg">
+    <img src="docs/img/255charts.png" alt="255 charts" style="width:300px;height:228px;">
+  </div>
+  <div class="hstext">
+  <h4>How the Recession Reshaped the Economy: Scatterplot of Line Charts</h4>
+  <div>
+    <a href="demos/hindsight-255charts/">With HindSight</a> <br>  
+    <a href="demos/255charts/">Without HindSight</a> <br><br>
+    Original Source: <a href="http://www.nytimes.com/interactive/2014/06/05/upshot/how-the-recession-reshaped-the-economy-in-255-charts.html?_r=0">The New York Times</a>
+    (Adapted with permission.)
+  </div>
+  </div>
+
+</div>
+
+<div class="hsexample">
+  <div class="hsimg">
+    <img src="docs/img/metafilter.png" alt="255 charts" style="width:300px;height:228px;vertical-align:middle;">
+  </div>
+  <div class="hstext">
+    <h4>MetaFilter: Small Multiples</h4>
+    <div>
+      <a href="demos/hindsight-metafilter/">With HindSight</a> <br>  
+      <a href="demos/metafilter/">Without HindSight</a> <br> <br>
+      Original Source: <a href="https://flowingdata.com/2014/10/15/linked-small-multiples/">Jim Vallandingham</a>
+    </div>
+  </div>
+
+</div>
+
+<div class="hsexample">
+  <div class="hsimg">
+  <img src="docs/img/co2.png" alt="255 charts" style="width:300px;height:228px;vertical-align:middle;">
+  </div>
+  <div class="hstext">
+    <h4>CO2 by Country: Coordinated Multiple Views</h4>
+  <div>
+    <a href="demos/hindsight-co2/">With HindSight</a> <br>  
+    <a href="demos/co2/">Without HindSight</a>  <br> <br>
+    Original Source: Adapted from research by <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=kUtMZnIAAAAJ&citation_for_view=kUtMZnIAAAAJ:d1gkVwhDpl0C">Jeremy Boy (et al)</a>
+    </div>
+  </div>
+
+</div>
+
+<div class="hsexample">
+  <div class="hsimg">
+    <img src="docs/img/parallelcoords.png" alt="255 charts" style="width:300px;height:228px;vertical-align:middle;">
+  </div>
+  <div class="hstext">
+    <h4>Cars Dataset: Parallel Coordinates</h4>
+    <div>
+      <a href="demos/hindsight-parallel-coordinates/">With HindSight</a> <br>  
+      <a href="demos/parallel-coordinates">Without HindSight</a> <br> <br>
+      Original Source: Adapted from <a href="https://bl.ocks.org/jasondavies/1341281">Jason Davies</a>
+    </div>
+  </div>
+</div>
+
+</div>
+
+</body>
+<script>
+console.log("Don't judge me on this code :X -- Lane");
+</script>

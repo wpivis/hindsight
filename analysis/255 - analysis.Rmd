@@ -1,0 +1,53 @@
+---
+title: "255 - analysis"
+output:
+  html_document:
+    highlight: default
+    theme: cerulean
+    toc: yes
+  pdf_document:
+    fig_height: 3
+    fig_width: 6
+    toc: yes
+---
+
+## Loading and Setup
+```{r, echo=FALSE}
+source("hindsight.R")  
+data <- read.csv("../data/255 - analysis - Copy.csv")
+```
+## Conversions and Filtering
+```{r}
+# Convert Time to something more readable
+data$time_for_charts <- data$time_for_charts/1000 
+
+fade <- subset(data, condition=="fade")
+nofade <- subset(data, condition=="nofade")
+
+length(data[,1])
+length(fade[,1])
+length(nofade[,1])
+```
+
+### Wilcox-Test
+```{r}
+wilcox.test(data$visited ~ data$condition, conf.int=TRUE)
+wilcox.test(data$revisit ~ data$condition, conf.int=TRUE)
+wilcox.test(data$time_for_charts ~ data$condition, conf.int=TRUE)
+mean(nofade$visited)
+```
+
+### Confidence Intervals
+```{r}
+ciplot("visited")
+ciplot("revisit")
+ciplot("time_for_charts")
+```
+
+
+### Effect Sizes
+```{r}
+reportES(data, "visited")  
+reportES(data, "revisit")  
+reportES(data, "time_for_charts")  
+```

@@ -1,0 +1,102 @@
+<!doctype html>
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  <title>Ask Metafilter Small Multiples</title>
+  <meta name="description" content="Spliting up new Ask Metafilter posts by category to see trends.">
+  <meta name="author" content="Jim Vallandingham">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/style.css">
+
+  <script src="js/libs/modernizr-2.0.6.min.js"></script>
+</head>
+
+<body>
+
+  <div class="container">
+    <h1>The Rise and Decline of Ask MetaFilter</h1>
+    <div id="lead">
+      <p>Metafilter's revenue has been on the decline, but has its content dried up as well?</p>
+      <p>Here we look at new posts on Ask Metafilter by category.<br/>Categories like <strong>computers &amp; internet</strong> have been dropping in use for a long time, most likely due to competition like Stack Overflow.<br/>Other smaller categories have had consistent use patterns until more recently.</p>
+      <p>Disclaimer: 2014 is included, even though the year is not over yet.</p>
+    </div>
+    <div id="main">
+      <div id="button-wrap">
+        <div id="count" class="button active">COUNT</div>
+        <div id="name" class="button">NAME</div>
+      </div>
+
+      <div id="vis"></div>
+    </div>
+  </div> <!--! end of #container -->
+
+
+  <!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script> -->
+  <script>window.jQuery || document.write('<script src="js/libs/jquery-1.7.2.min.js"><\/script>')</script>
+
+
+  <script src="js/libs/coffee-script.js"></script>
+  <script src="js/libs/isotope.pkgd.min.js"></script>
+  <script src="js/libs/d3.js"></script>
+  <script src="js/libs/queue.min.js"></script>
+  <script type="text/coffeescript" src="coffee/small_multiples.coffee"></script>
+  <script type="text/javascript">
+    $(document).ready(function() {
+    });
+  </script>
+
+
+  <script> // Change UA-XXXXX-X to be your site's ID
+    window._gaq = [['_setAccount','UAXXXXXXXX1'],['_trackPageview'],['_trackPageLoadTime']];
+    Modernizr.load({
+      load: ('https:' == location.protocol ? '//ssl' : '//www') + '.google-analytics.com/ga.js'
+    });
+  </script>
+
+
+  <!--[if lt IE 7 ]>
+    <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
+    <script>window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})</script>
+  <![endif]-->
+
+  <script>
+  (function() {
+    var data  = {};
+
+    init();
+
+    function init() {
+      experimentr.hideNext();
+
+      // Load dataset
+
+      // Choose condition & store
+
+      // Build vis
+    }
+
+    function validate() {
+      if( data.workerId ) {
+        experimentr.addData(data);
+
+        if( workers.indexOf(data.workerId) == -1 ) {
+          d3.select('#consentYes').attr('disabled', null);
+        } else {
+          d3.select('#invalidMessage').style('display', 'inline');
+        }
+      }
+    }
+
+  }());
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,117 @@
+
+<div id="demographics">
+
+<p>
+Thank you! Before we begin, please fill out the following demographics form.
+(Please note that several of the questions are optional.)
+</p>
+
+<div id="age">Your age:
+    <div id="ages">
+        <input type="radio" id="a1" name="age" value="18-25"> 18-25
+        <input type="radio" id="a2" name="age" value="25-39"> 25-39
+        <input type="radio" id="a3" name="age" value="40-49"> 40-49
+        <input type="radio" id="a4" name="age" value="50-59"> 50-59
+        <input type="radio" id="a5" name="age" value="60+"> 60+
+        <input type="radio" id="a6" name="age" value="Unspecified"> Unspecified
+    </div>
+</div>
+<br>
+<div id="sex">Your gender:
+    <div id="sexes">
+        <input type="radio" id="s1" name="sex" value="Male"> Male
+        <input type="radio" id="s2" name="sex" value="Female"> Female
+        <input type="radio" id="s3" name="sex" value="Unspecified"> Unspecified
+    </div>
+</div>
+<br>
+<div id="handed">Are you left or right handed:
+    <div id="handedness">
+        <input type="radio" id="s1" name="handed" value="Right"> Right
+        <input type="radio" id="s2" name="handed" value="Left"> Left
+        <input type="radio" id="s3" name="handed" value="Unspecified"> Unspecified
+    </div>
+</div>
+<br>
+<div id="degree">Highest degree obtained:
+    <div id="degrees">
+        <input type="radio" id="d1" name="degree" value="High School"> High School
+        <input type="radio" id="d2" name="degree" value="Bachelors"> Bachelors
+        <input type="radio" id="d3" name="degree" value="Masters"> Masters
+        <input type="radio" id="d4" name="degree" value="PhD"> PhD
+        <input type="radio" id="d5" name="degree" value="Other"> Other Professional Degree
+        <input type="radio" id="s3" name="handed" value="Unspecified"> Unspecified
+    </div>
+</div>
+<br>
+<div id="screen_size">Your screen size is closest to:
+    <div id="screen_sizes">
+        <input type="radio" id="m4" name="screen_size" value="9 or smaller"> 9" or smaller
+        <input type="radio" id="m4" name="screen_size" value=11> 11"
+        <input type="radio" id="m4" name="screen_size" value=13> 13"
+        <input type="radio" id="m4" name="screen_size" value=15> 15"
+        <input type="radio" id="m4" name="screen_size" value=17> 17"
+        <input type="radio" id="m4" name="screen_size" value=19> 19"
+        <input type="radio" id="m4" name="screen_size" value=21> 21"
+        <input type="radio" id="m5" name="screen_size" value="23 or larger"> 23" or larger
+        <input type="radio" id="m5" name="screen_size" value="unsure"> I'm not sure
+    </div>
+</div>
+<br>
+<div id="visualizations">How familiar are you with data visualizations (1 not familiar at all, 7 very familiar)?
+    <div id="visualizationfam"> 
+        <input type="radio" id="sc1" name="vis_experience" value=1> 1
+        <input type="radio" id="sc2" name="vis_experience" value=2> 2
+        <input type="radio" id="sc3" name="vis_experience" value=3> 3
+        <input type="radio" id="sc4" name="vis_experience" value=4> 4
+        <input type="radio" id="sc5" name="vis_experience" value=5> 5
+        <input type="radio" id="sc6" name="vis_experience" value=6> 6
+        <input type="radio" id="sc7" name="vis_experience" value=7> 7
+     </div>
+</div>
+
+<p>
+Please click next to continue.
+</p>
+
+</div>
+
+<script> 
+(function() {
+  var data = {};
+
+  experimentr.startTimer('demographics');
+
+  d3.selectAll('input')
+  .filter(function(d) { return this.name === 'age' ? this : null; })
+  .on('change', function() { data.age = this.value; validate(); });
+  
+  d3.selectAll('input')
+  .filter(function(d) { return this.name === 'sex' ? this : null; })
+  .on('change', function() { data.sex = this.value; validate(); });
+
+  d3.selectAll('input')
+  .filter(function(d) { return this.name === 'handed' ? this : null; })
+  .on('change', function() { data.handed = this.value; validate(); });
+  
+  d3.selectAll('input')
+  .filter(function(d) { return this.name === 'degree' ? this : null; })
+  .on('change', function() { data.degree = this.value; validate(); });
+  
+  d3.selectAll('input')
+  .filter(function(d) { return this.name === 'screen_size' ? this : null; })
+  .on('change', function() { data.screen_size = this.value; validate(); });
+  
+  d3.selectAll('input')
+  .filter(function(d) { return this.name === 'vis_experience' ? this : null; })
+  .on('change', function() { data.vis_experience = this.value; validate(); });
+  
+  function validate() {
+    if(data.age && data.sex && data.degree && data.screen_size && data.vis_experience) {
+	    experimentr.endTimer('demographics');
+	    experimentr.addData(data);
+	    experimentr.release();
+	  }
+	}
+}());
+</script>

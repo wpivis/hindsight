@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+
+<meta charset="utf-8">
+<title>Survey</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+<link rel="shortcut icon" href="favicon.ico" />
+<!-- <script src="components/d3js/d3.v3.min.js"></script> -->
+<script src="experimentr.js"></script>
+
+<!-- Libs -->
+<script type="text/javascript" src="js/co2data.js"></script>
+<script type="text/javascript" src="js/co2data_arrs.js"></script>
+
+<script type="text/javascript" src="js/libs/d3.js"></script>
+<script type="text/javascript" src="js/libs/topojson.min.js"></script>
+<script type="text/javascript" src="js/control.js"></script>
+<link href='http://fonts.googleapis.com/css?family=Abril+Fatface' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Quando' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" type="text/css" media="screen" href="css/main.css" />
+
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/style.css">
+<!-- libraries for co2 -->
+
+<script src="js/libs/jquery.min.js" type="text/javascript"></script>
+<!-- <script src="js/libs/d3.min.js" type="text/javascript"></script> -->
+<script src="js/libs/queue.min.js" type="text/javascript"></script>
+<script src="js/libs/underscore-min.js" type="text/javascript"></script>
+<script src="js/libs/extData.js" type="text/javascript"></script>
+
+<style>
+    * {
+        color: #333;
+        font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+    }
+
+    body {
+        margin: 1em auto 4em auto;
+        width: 815px;
+    }
+    #experimentr {
+        margin: 4em auto 1em auto;
+        width: 720px;
+    }
+    #control {
+        margin-top: 1em;
+    }
+    #next-button {
+        float: right;
+    }
+
+    .placeholder {
+        color: #7A378B;
+        font-weight: bold;
+        text-decoration: underline;
+    }
+
+    #hit {
+        display: none;
+    }
+
+
+</style>
+
+<body>
+
+    <div id="hit" class="container">
+        <h1>Analyzing trends in the environment</h1>
+
+        <div id="lead">
+
+            <p>Your task is to analyze how the content on this site has evolved over time.</p>
+            
+            <p>Use the interactive visualization below for your analysis. </p>
+
+            <p>On the following page, we will ask you for a brief description of some of the trends you identified.</p>
+        </div>
+
+        
+        <!-- for co2 -->
+        <div id="container">
+
+            <div >
+                <h1>
+                    Where are the Big Polluters since 1971?
+                </h1>
+
+                <p>
+                    The amount of CO2 emissions from fuel combustion has doubled over the past 30 years. In 1971, the world-wide average emission was of 14095 million tonnes. In 2007, it was of 28962 million tonnes. Predictions for the year 2030 estimate an average of 40226 million tonnes of CO2 emission.
+                </p>
+            </div>
+
+
+            <div id="main-block">
+
+
+                <div id="buttons"></div>
+                <div id="col">
+                    <div id="inner-col">
+                        <table>
+                            <tr>
+                                <td></td>   
+                                <td class="r-all" onmouseup="remove_all();">Remove All</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div id="map">
+                </div>
+
+                <div id="chart">
+                </div>
+            </div>
+
+            <div id="sources" class="colx3">
+                <p>Source: OECD Factbook 2010, Economic, Environmental and Social Statistics, Chap. Emissions of Carbon Dioxide</p>
+                <p>Data: <a href="http://www.keepeek.com/Digital-Asset-Management/oecd/economics/oecd-factbook-2010/co2-emissions-from-fuel-combustion-table_factbook-2010-table185-en" target="_blank">CO2 emissions from fuel combustion</a>
+            </div>
+            <script type="text/javascript" src="js/main.js"></script>
+        </div><!-- end of co2 -->
+
+
+        <div>
+            <strong> Click the following button only after you've finished exploring -- you cannot return to this page. </strong>
+            <button id="finished">I'm finished</button>
+        </div>
+
+    </div> <!--! end of #container -->
+
+</body>
+
+<script>
+    //prepare the sequence, if debug vis or not
+    var seq = debugVis ? [] : ['modules/consent.html',
+        'modules/demographics.html',
+        'modules/training.html'];
+    seq.push('modules/hit.html');
+    seq.push('modules/debrief.html');
+
+    experimentr.sequence(seq).start();
+</script>

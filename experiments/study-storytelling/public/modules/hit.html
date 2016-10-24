@@ -1,0 +1,58 @@
+
+  <div>
+  </div>
+
+  <script>
+  ( function() {
+    var data  = {};
+
+
+    init();
+
+
+    function init() {
+
+      experimentr.hideNext();
+      d3.select('#hit').style('display', 'inline');
+
+      loadCO2Vis();
+
+      experimentr.startTimer('exploration');
+
+      // "click here when you're finished" on bottom ends it
+      d3.select('#finished')
+      .on('click', function() { console.log("finished"); validate(); });
+    }
+
+    function validate() {
+      // Gather our data
+      var visited = d3.selectAll('.list-el.'+visitMark)[0].length
+      smData.visitedYears = d3.selectAll('.y_button.'+visitMark)[0].length
+      
+      //visitedData Preprocess
+      console.log("Log length: " + smData.log.length)
+      smData.log = JSON.stringify(smData.log);
+      console.log('Countries visited: ', visited);
+      console.log('Years visited: ', smData.visitedYears);
+
+
+      data.hover = smData.hover;
+      data.click = smData.click;
+      data.fadeDelay = smData.fadeDelay;
+      data.clickFadeDelay = smData.clickFadeDelay;
+      data.condition = smData.condition;
+      data.log = smData.log;
+      data.visitedCountries = visited;
+      data.visitedYears = smData.visitedYears;
+      console.log('Detailed Data: ', data);
+      
+      // Wrap up
+      experimentr.addData(data);
+      experimentr.endTimer('exploration');
+      d3.select('#hit').style('display', 'none');
+      experimentr.next();
+    }
+
+  }());
+  </script>
+

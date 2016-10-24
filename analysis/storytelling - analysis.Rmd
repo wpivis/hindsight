@@ -1,0 +1,85 @@
+---
+title: "storytelling - analysis"
+output:
+  html_document:
+    code_folding: hide
+    highlight: default
+    theme: cerulean
+    toc: yes
+    toc_float: yes
+  pdf_document:
+    fig_height: 3
+    fig_width: 6
+    toc: yes
+---
+## Experiment Details
+## Loading and Setup
+```{r, echo=FALSE}
+data <- read.csv("../data/storytelling - analysis.csv")
+source('hindsight.R')
+```
+## Conversions and Filtering
+```{r}
+
+# Convert Time to something more readable
+data$time_diff_exploration <- data$time_diff_exploration/1000 
+
+# Storytelling metrics
+data$interaction <- data$hover + data$click
+
+# Split on Fade/NoFade for easier comparison later
+fade <- subset(data, condition=="fade")
+nofade <- subset(data, condition=="nofade")
+
+#Output numbers for conditions
+length( data[,1] )
+length(fade[,1])
+length(nofade[,1])
+
+```
+### Summary Tests
+```{r}
+report(fade, "visitedCountries")
+report(nofade, "visitedCountries")
+report(fade, "visitedYears")
+report(nofade, "visitedYears")
+
+report(fade, "hover")
+report(nofade, "hover")
+report(fade, "click")
+report(nofade, "click")
+report(fade, "interaction")
+report(nofade, "interaction")
+
+report(fade, "inspect")
+report(nofade, "inspect")
+report(fade, "connect")
+report(nofade, "connect")
+report(fade, "select")
+report(nofade, "select")
+report(fade, "explore")
+report(nofade, "explore")
+report(fade, "filter")
+report(nofade, "filter")
+```
+### Wilcox-Test
+```{r}
+wilcox.test(data$visitedCountries ~ data$condition)
+wilcox.test(data$visitedYears ~ data$condition)
+wilcox.test(data$time_diff_exploration ~ data$condition)
+```
+
+### Confidence Intervals
+```{r}
+ciplot("visitedCountries")
+ciplot("visitedYears")
+ciplot("time_diff_exploration")
+
+```
+
+### Effect Sizes
+```{r}
+reportES(data, "visitedCountries")  
+reportES(data, "visitedYears")  
+reportES(data, "time_diff_exploration")  
+```
